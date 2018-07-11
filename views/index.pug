@@ -1,0 +1,21 @@
+extends layout.pug
+block content
+  body.text-center
+    .cover-container.d-flex.h-100.p-3.mx-auto.flex-column
+      header.masthead.mb-auto
+        .inner
+          h1.masthead-brand.display-3 Hangman
+      main.inner.cover(role='main')
+        p.lead
+          | This is a hangman game, you can play alone or challenge a friend.
+          br
+          | Guess the word or you will be hanged!
+        if error
+          .alert.alert-warning.alert-dismissible
+            a.close(href='/initial-word', data-dismiss='alert', aria-label='close') ×
+            strong Warning!
+            p(class="error") #{error}
+        a.btn.btn-lg.btn-secondary.align-bottom(href='/game') Single player
+        |    
+        a.btn.btn-lg.btn-secondary.align-bottom(href='/two-players') Two players
+      include footer.pug

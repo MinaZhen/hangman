@@ -1,0 +1,39 @@
+extends layout.pug
+block content
+  body.text-center
+    .cover-container.d-flex.h-100.p-3.mx-auto.flex-column
+      header.masthead.mb-auto
+        .inner
+          h1.masthead-brand.display-3 Hangman
+      main.inner.cover(role='main')
+        p.lead
+          | Choose a word for your mate.
+          br
+          | Also you can select the number of attempts.
+        br
+        br
+        if error
+          .alert.alert-warning.alert-dismissible
+            a.close(href='/two-players', data-dismiss='alert', aria-label='close') ×
+            strong Warning! 
+            span #{error}
+        form(action='/initial-word', method='POST')
+          label(for='attm')
+            | Attempts:
+            span#val-range
+          br
+          input#attm(type='range', value='10', step='1', min='5', max='15', data-show-value='true', name='attempts')
+          p
+            br
+          .form-inline.input-group.mx-auto
+            input#desc.form-control(type='text', placeholder='Word to guess', name='word', autocomplete='off', autofocus='')
+            .input-group-append
+              input.btn.btn-outline-secondary(type='submit', value='Send!')
+      include footer.pug
+    script.
+      var slider = document.getElementById("attm");
+      var output = document.getElementById("val-range");
+      output.innerHTML = slider.value;
+      slider.oninput = function() {
+      output.innerHTML = this.value;
+      }

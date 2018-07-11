@@ -1,0 +1,21 @@
+{
+  "name": "hangman",
+  "version": "2.0.0",
+  "description": "Hangman game",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/logic-es6.test.js",
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "MinaZhen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "expect": "^23.4.0",
+    "mocha": "^5.2.0"
+  }
+}
